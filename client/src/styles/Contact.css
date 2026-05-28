@@ -1,0 +1,225 @@
+/* ── Page ── */
+.contact-page {
+  background-color: #FAF7F2;
+  min-height: 100vh;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #1A0F08;
+}
+
+/* ── Hero ── */
+.contact-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 160px 24px 80px;
+  background: linear-gradient(180deg, #F0E4D0 0%, #FAF7F2 100%);
+  border-bottom: 1px solid rgba(184,134,11,0.2);
+}
+
+.contact-hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.8em;
+  color: #B8860B;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.contact-hero-title {
+  font-family: 'Playfair Display', serif;
+  color: #1A0F08;
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.contact-hero-sub {
+  font-size: 15px;
+  color: #7A5230;
+  max-width: 440px;
+  line-height: 1.7;
+}
+
+/* ── Divider ── */
+.contact-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 16px 0 0;
+}
+.contact-divider-line {
+  width: 60px;
+  height: 1px;
+  background: #B8860B;
+  opacity: 0.65;
+}
+.contact-divider-diamond {
+  width: 7px;
+  height: 7px;
+  background: #B8860B;
+  transform: rotate(45deg);
+}
+
+/* ── Main layout ── */
+.contact-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 64px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-main {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+/* ── Form ── */
+.contact-form-label {
+  font-size: 11px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: #B8860B;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.contact-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .contact-row { grid-template-columns: 1fr; }
+}
+
+.contact-input,
+.contact-textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: #FFFFFF;
+  border: 1px solid rgba(184,134,11,0.3);
+  color: #1A0F08;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.contact-input::placeholder,
+.contact-textarea::placeholder {
+  color: #A68B6A;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+  border-color: #B8860B;
+}
+
+.contact-textarea {
+  resize: vertical;
+  min-height: 160px;
+  margin-bottom: 24px;
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #B8860B;
+  color: #FAF7F2;
+  border: none;
+  padding: 14px 36px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-btn:hover {
+  background: #9A7009;
+}
+
+/* ── Info sidebar ── */
+.contact-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.contact-info-block {
+  padding: 28px;
+  background: #FFFFFF;
+  border: 1px solid rgba(184,134,11,0.25);
+}
+
+.contact-info-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.6em;
+  text-transform: uppercase;
+  color: #B8860B;
+  margin-bottom: 8px;
+}
+
+.contact-info-value {
+  font-size: 15px;
+  color: #1A0F08;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-info-value:hover {
+  color: #B8860B;
+}
+
+/* ── Social links ── */
+.contact-social-block {
+  padding: 28px;
+  background: #FFFFFF;
+  border: 1px solid rgba(184,134,11,0.25);
+}
+
+.contact-social-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.contact-social-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #5C3D2E;
+  text-decoration: none;
+  padding: 10px 12px;
+  border: 1px solid rgba(184,134,11,0.2);
+  transition: all 0.2s;
+}
+
+.contact-social-link:hover {
+  border-color: #B8860B;
+  color: #B8860B;
+  background: rgba(184,134,11,0.05);
+}
+
+.contact-social-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}

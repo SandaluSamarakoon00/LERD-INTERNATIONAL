@@ -1,0 +1,256 @@
+/* ── Page base ── */
+.about-page {
+  background-color: #FAF7F2;
+  min-height: 100vh;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #1A0F08;
+}
+
+/* ── Hero ── */
+.about-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 160px 24px 96px;
+  background: linear-gradient(180deg, #F0E4D0 0%, #FAF7F2 100%);
+  border-bottom: 1px solid rgba(184,134,11,0.25);
+}
+
+.about-hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.8em;
+  color: #B8860B;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.about-hero-title {
+  font-family: 'Playfair Display', serif;
+  color: #1A0F08;
+  font-size: clamp(36px, 6vw, 80px);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.about-hero-sub {
+  font-size: 16px;
+  color: #7A5230;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* ── Divider ── */
+.about-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.about-divider-line {
+  width: 80px;
+  height: 1px;
+  background: #B8860B;
+  opacity: 0.7;
+}
+.about-divider-diamond {
+  width: 8px;
+  height: 8px;
+  background: #B8860B;
+  transform: rotate(45deg);
+}
+
+/* ── Sections ── */
+.about-section {
+  max-width: 896px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.about-section-alt {
+  background-color: #F0E4D0;
+  border-top: 1px solid rgba(184,134,11,0.2);
+  border-bottom: 1px solid rgba(184,134,11,0.2);
+  padding: 80px 24px;
+}
+
+.about-section-inner {
+  max-width: 896px;
+  margin: 0 auto;
+}
+
+/* ── Section headings ── */
+.about-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.7em;
+  color: #B8860B;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.about-heading {
+  font-family: 'Playfair Display', serif;
+  color: #1A0F08;
+  font-size: clamp(24px, 3vw, 40px);
+  line-height: 1.25;
+  margin-bottom: 0;
+}
+
+.about-heading-italic {
+  font-style: italic;
+  color: #B8860B;
+}
+
+/* ── Body text ── */
+.about-body {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #5C3D2E;
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+/* ── Stat block ── */
+.about-stat-block {
+  background: #FFFFFF;
+  border: 1px solid rgba(184,134,11,0.3);
+  border-radius: 2px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  box-shadow: 0 2px 20px rgba(90,50,20,0.06);
+}
+
+.about-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #B8860B;
+  width: 64px;
+  flex-shrink: 0;
+}
+
+.about-stat-label {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #1A0F08;
+  margin-bottom: 2px;
+}
+
+.about-stat-desc {
+  font-size: 11px;
+  color: #8B6347;
+}
+
+/* ── Vision / Mission cards ── */
+.about-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(184,134,11,0.3);
+  border-radius: 2px;
+  padding: 32px;
+  box-shadow: 0 2px 16px rgba(90,50,20,0.05);
+}
+
+.about-card-bar {
+  width: 4px;
+  height: 32px;
+  background: #B8860B;
+  flex-shrink: 0;
+}
+
+.about-card-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.6em;
+  color: #B8860B;
+  text-transform: uppercase;
+}
+
+.about-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: #1A0F08;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.about-card-body {
+  font-size: 14px;
+  color: #7A5230;
+  line-height: 1.7;
+}
+
+/* ── Founder photos ── */
+.about-founder-frame {
+  position: relative;
+  width: 220px;
+  height: 280px;
+  margin: 0 auto 24px;
+  overflow: hidden;
+  border: 2px solid rgba(184,134,11,0.5);
+  box-shadow: 0 8px 32px rgba(90,50,20,0.15);
+}
+
+.about-founder-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.about-founder-frame-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(240,228,208,0.35) 0%, transparent 60%);
+}
+
+.about-founder-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: #1A0F08;
+  margin-bottom: 4px;
+}
+
+.about-founder-role {
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #B8860B;
+  margin-bottom: 16px;
+}
+
+.about-founder-bio {
+  font-size: 14px;
+  color: #7A5230;
+  line-height: 1.7;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* ── Values ── */
+.about-value-diamond {
+  width: 8px;
+  height: 8px;
+  background: #B8860B;
+  transform: rotate(45deg);
+  margin: 0 auto 16px;
+}
+
+.about-value-title {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #1A0F08;
+  margin-bottom: 8px;
+}
+
+.about-value-desc {
+  font-size: 11px;
+  color: #8B6347;
+  line-height: 1.6;
+}
