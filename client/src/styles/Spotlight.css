@@ -1,0 +1,119 @@
+/* ── Page ── */
+.spotlight-page {
+  background-color: #FAF7F2;
+  min-height: 100vh;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #1A0F08;
+}
+
+/* ── Hero ── */
+.spotlight-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 160px 24px 80px;
+  background: linear-gradient(180deg, #F0E4D0 0%, #FAF7F2 100%);
+  border-bottom: 1px solid rgba(184,134,11,0.2);
+}
+
+.spotlight-hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.8em;
+  color: #B8860B;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.spotlight-hero-title {
+  font-family: 'Playfair Display', serif;
+  color: #1A0F08;
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.spotlight-hero-sub {
+  font-size: 15px;
+  color: #7A5230;
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+/* ── Divider ── */
+.spotlight-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 16px 0 0;
+}
+.spotlight-divider-line {
+  width: 60px;
+  height: 1px;
+  background: #B8860B;
+  opacity: 0.65;
+}
+.spotlight-divider-diamond {
+  width: 7px;
+  height: 7px;
+  background: #B8860B;
+  transform: rotate(45deg);
+}
+
+/* ── Gallery ── */
+.spotlight-gallery {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 72px 24px 96px;
+}
+
+.spotlight-grid {
+  columns: 3;
+  column-gap: 10px;
+}
+
+.spotlight-grid-item {
+  break-inside: avoid;
+  margin-bottom: 10px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  background: #E8D8C0;
+}
+
+.spotlight-grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.spotlight-grid-item:hover img {
+  transform: scale(1.04);
+}
+
+.spotlight-grid-item-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 15, 8, 0);
+  transition: background 0.3s ease;
+  pointer-events: none;
+}
+
+.spotlight-grid-item:hover .spotlight-grid-item-overlay {
+  background: rgba(26, 15, 8, 0.18);
+}
+
+@media (max-width: 900px) {
+  .spotlight-grid {
+    columns: 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .spotlight-grid {
+    columns: 1;
+  }
+}

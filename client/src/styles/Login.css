@@ -1,0 +1,44 @@
+.login-page {
+  background: linear-gradient(135deg, #1A0F08 0%, #2C1A0E 60%, #1A0F08 100%);
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(196, 154, 108, 0.18);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.login-accent-line {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, #B8860B, transparent);
+}
+
+.login-logo {
+  filter: brightness(0) invert(1);
+}
+
+.login-input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(196, 154, 108, 0.2);
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #B8860B;
+  box-shadow: 0 0 0 1px #92650a;
+}
+
+.login-input-icon {
+  color: #B8860B;
+}
+
+.login-submit-btn {
+  background: linear-gradient(90deg, #8B6508, #B8860B);
+  color: #1A0F08;
+}
+
+.login-submit-btn:hover {
+  opacity: 0.9;
+}

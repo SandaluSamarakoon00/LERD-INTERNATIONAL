@@ -1,0 +1,50 @@
+.lerd-bg-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+  grid-template-areas:
+    "a b c"
+    "a d e"
+    "f g e";
+}
+
+.ga { grid-area: a; }
+.gb { grid-area: b; }
+.gc { grid-area: c; }
+.gd { grid-area: d; }
+.ge { grid-area: e; }
+.gf { grid-area: f; }
+.gg { grid-area: g; }
+
+.lerd-bg-grid div {
+  overflow: hidden;
+}
+
+.lerd-bg-grid div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: slowZoom 8s ease-in-out infinite alternate;
+}
+
+.lerd-bg-grid div:nth-child(even) img {
+  animation-direction: alternate-reverse;
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1);    }
+  to   { transform: scale(1.08); }
+}
+
+/* Animation container height: taller on mobile for 2-row layout */
+.lerd-reveal-height {
+  height: 110px;
+}
+@media (min-width: 640px) {
+  .lerd-reveal-height {
+    height: clamp(56px, 9.5vw, 120px);
+  }
+}
