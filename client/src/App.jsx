@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
 import Products from './pages/Products'
+import BuyProduct from './pages/BuyProduct'
 import Contact from './pages/Contact'
 import Spotlight from './pages/Spotlight'
 import NotFound from './pages/NotFound'
@@ -35,6 +36,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="products" element={<Products />} />
+          <Route path="products/:id" element={<BuyProduct />} />
           <Route path="spotlight" element={<Spotlight />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
