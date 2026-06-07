@@ -82,7 +82,7 @@ export default function Footer() {
               <img src="/images/lerd-logo.png" alt="LERD" className="h-10 w-auto" style={{ filter: 'brightness(0) invert(1)' }} />
               <p className="font-serif text-2xl text-leather-100 tracking-widest">LERD</p>
             </div>
-            <p className="text-xs tracking-[0.3em] text-yellow-600 uppercase mb-4">Premium Leather Goods</p>
+            <p className="text-xs tracking-[0.3em] text-yellow-600 uppercase mb-4">Luxurious Leather Crafts</p>
             <p className="text-sm leading-relaxed text-leather-400">
               Handcrafted leather goods made with passion, precision, and pride — born in Sri Lanka.
             </p>

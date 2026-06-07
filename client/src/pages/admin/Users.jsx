@@ -87,15 +87,16 @@ export default function Users() {
       return
     }
 
-    // Add new user via backend
+    // Add new user via admin endpoint (requires admin token)
     if (!form.password || form.password.length < 6) {
       return setFormError('Password must be at least 6 characters')
     }
     setSaving(true)
     try {
-      const res  = await fetch(`${API}/api/auth/register`, {
+      const token = await auth.currentUser.getIdToken()
+      const res   = await fetch(`${API}/api/auth/users`, {
         method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body:    JSON.stringify({ name: form.name, username: form.username, email: form.email, phone: form.phone, password: form.password, type: form.type }),
       })
       const data = await res.json()

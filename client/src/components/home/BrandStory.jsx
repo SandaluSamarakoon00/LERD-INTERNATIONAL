@@ -13,13 +13,6 @@ export default function BrandStory() {
             className="w-full h-[500px] object-cover"
             style={{ border: '1px solid rgba(184,134,11,0.25)' }}
           />
-          <div
-            className="absolute -bottom-6 -right-6 p-8 hidden md:block"
-            style={{ backgroundColor: '#B8860B' }}
-          >
-            <p className="font-serif text-4xl font-bold" style={{ color: '#FAF7F2' }}>8+</p>
-            <p className="text-xs tracking-widest uppercase mt-1" style={{ color: '#F5ECD7' }}>Years of craft</p>
-          </div>
         </div>
 
         {/* Text side */}

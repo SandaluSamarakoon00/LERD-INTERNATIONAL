@@ -1,22 +1,93 @@
-import { Package, ShoppingCart, Warehouse, TrendingUp } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Package, ShoppingCart, TrendingUp } from 'lucide-react'
+import { auth } from '../../firebase'
+import { onAuthStateChanged } from 'firebase/auth'
 
-const stats = [
-  { label: 'Total Products', value: '24',      icon: Package,      color: '#B8860B' },
-  { label: 'Total Orders',   value: '138',     icon: ShoppingCart, color: '#4CAF50' },
-  { label: 'Low Stock',      value: '5',       icon: Warehouse,    color: '#E53935' },
-  { label: 'Revenue (LKR)',  value: '485,000', icon: TrendingUp,   color: '#1E88E5' },
-]
+const API = import.meta.env.VITE_API_URL
 
-const recentOrders = [
-  { id: '#ORD001', customer: 'Amal Perera',    product: 'Classic Bifold Wallet',    amount: 'Rs. 4,500',  status: 'Delivered' },
-  { id: '#ORD002', customer: 'Nimali Silva',   product: 'Executive Tote Bag',       amount: 'Rs. 12,500', status: 'Pending'   },
-  { id: '#ORD003', customer: 'Kasun Fernando', product: 'Handstitched Belt',        amount: 'Rs. 3,200',  status: 'Processing'},
-  { id: '#ORD004', customer: 'Dilini Jayawardena', product: 'Vintage Messenger Bag', amount: 'Rs. 8,900', status: 'Delivered' },
-]
+const STATUS_STYLE = {
+  pending:    { color: '#F59E0B', bg: '#F59E0B22' },
+  paid:       { color: '#22C55E', bg: '#22C55E22' },
+  processing: { color: '#3B82F6', bg: '#3B82F622' },
+  shipped:    { color: '#A855F7', bg: '#A855F722' },
+  delivered:  { color: '#10B981', bg: '#10B98122' },
+  cancelled:  { color: '#EF4444', bg: '#EF444422' },
+  failed:     { color: '#EF4444', bg: '#EF444422' },
+}
 
-const statusColor = { Delivered: '#4CAF50', Pending: '#FFA726', Processing: '#1E88E5' }
+function StatusBadge({ status }) {
+  const s = STATUS_STYLE[status] || { color: '#A07850', bg: '#A0785022' }
+  return (
+    <span style={{
+      fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em',
+      textTransform: 'uppercase', padding: '3px 10px', borderRadius: '20px',
+      color: s.color, background: s.bg,
+    }}>
+      {status}
+    </span>
+  )
+}
+
+function formatDate(val) {
+  if (!val) return '—'
+  if (val._seconds) return new Date(val._seconds * 1000).toLocaleDateString('en-LK', { month: 'short', day: 'numeric' })
+  const d = new Date(val)
+  return isNaN(d) ? '—' : d.toLocaleDateString('en-LK', { month: 'short', day: 'numeric' })
+}
 
 export default function Dashboard() {
+  const [products,     setProducts]     = useState([])
+  const [orders,       setOrders]       = useState([])
+  const [loading,      setLoading]      = useState(true)
+
+  useEffect(() => {
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (!user) { setLoading(false); return }
+      try {
+        const token = await user.getIdToken()
+        const [prodRes, ordRes] = await Promise.all([
+          fetch(`${API}/api/products`),
+          fetch(`${API}/api/orders/all`, { headers: { Authorization: `Bearer ${token}` } }),
+        ])
+        const [prods, ords] = await Promise.all([prodRes.json(), ordRes.json()])
+        if (prodRes.ok) setProducts(prods)
+        if (ordRes.ok)  setOrders(ords)
+      } catch (err) {
+        console.error('Dashboard load error', err)
+      } finally {
+        setLoading(false)
+      }
+    })
+    return unsub
+  }, [])
+
+  const totalRevenue = orders
+    .filter(o => o.status === 'paid' || o.status === 'delivered')
+    .reduce((sum, o) => sum + (Number(o.amount) || 0), 0)
+
+  const recentOrders = orders.slice(0, 5)
+
+  const stats = [
+    {
+      label: 'Total Products',
+      value: loading ? '—' : products.length.toLocaleString(),
+      icon:  Package,
+      color: '#B8860B',
+    },
+    {
+      label: 'Total Orders',
+      value: loading ? '—' : orders.length.toLocaleString(),
+      icon:  ShoppingCart,
+      color: '#4CAF50',
+    },
+    {
+      label: 'Revenue (LKR)',
+      value: loading ? '—' : `Rs. ${totalRevenue.toLocaleString()}`,
+      icon:  TrendingUp,
+      color: '#1E88E5',
+    },
+  ]
+
   return (
     <div>
       <h1 className="admin-page-title">Dashboard</h1>
@@ -40,34 +111,49 @@ export default function Dashboard() {
       {/* Recent Orders */}
       <div className="admin-card">
         <h2 className="admin-card-title">Recent Orders</h2>
-        <div className="admin-table-wrap">
-          <table className="admin-table">
-            <thead>
-              <tr>
-                <th>Order ID</th>
-                <th>Customer</th>
-                <th>Product</th>
-                <th>Amount</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {recentOrders.map(o => (
-                <tr key={o.id}>
-                  <td className="admin-id">{o.id}</td>
-                  <td>{o.customer}</td>
-                  <td>{o.product}</td>
-                  <td>{o.amount}</td>
-                  <td>
-                    <span className="admin-badge-status" style={{ color: statusColor[o.status], background: `${statusColor[o.status]}22` }}>
-                      {o.status}
-                    </span>
-                  </td>
+        {loading ? (
+          <p style={{ padding: '20px', textAlign: 'center', color: '#A07850', fontSize: '13px' }}>Loading…</p>
+        ) : (
+          <div className="admin-table-wrap">
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Product</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Date</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {recentOrders.length === 0 ? (
+                  <tr><td colSpan={6} className="admin-empty">No orders yet.</td></tr>
+                ) : recentOrders.map(o => (
+                  <tr key={o.id}>
+                    <td>
+                      <span style={{ fontFamily: 'monospace', fontSize: '11px', color: '#B8860B', background: '#B8860B22', padding: '2px 7px', borderRadius: '4px' }}>
+                        {o.orderId || o.id}
+                      </span>
+                    </td>
+                    <td style={{ fontWeight: 600, color: '#F5ECD7' }}>
+                      {o.customer?.firstName} {o.customer?.lastName}
+                    </td>
+                    <td style={{ color: '#C49A6C' }}>
+                      {o.items?.[0]?.name || '—'}
+                      {o.items?.length > 1 && (
+                        <span style={{ color: '#7A5C3A', fontSize: '11px' }}> +{o.items.length - 1}</span>
+                      )}
+                    </td>
+                    <td style={{ fontWeight: 600 }}>Rs. {Number(o.amount || 0).toLocaleString()}</td>
+                    <td><StatusBadge status={o.status} /></td>
+                    <td style={{ color: '#A07850', fontSize: '12px' }}>{formatDate(o.createdAt)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   )

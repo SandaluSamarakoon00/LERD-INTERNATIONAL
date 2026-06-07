@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { User, Mail, Lock, Eye, EyeOff, Phone, AtSign } from 'lucide-react'
 import { auth, googleProvider } from '../firebase'
-import { signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth'
+import { signInWithPopup, signInWithEmailAndPassword, sendPasswordResetEmail, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import '../styles/Login.css'
 
 const API = import.meta.env.VITE_API_URL
@@ -132,19 +132,33 @@ export default function Login() {
     if (/\s/.test(regUsername))     return setError('Username cannot contain spaces')
 
     setLoading(true)
+    let newUser = null
     try {
-      const res  = await fetch(`${API}/api/auth/register`, {
+      // Step 1: password goes directly to Firebase — never reaches our server
+      const cred = await createUserWithEmailAndPassword(auth, regEmail, regPassword)
+      newUser = cred.user
+      await updateProfile(newUser, { displayName: regName })
+
+      // Step 2: save profile (name/username/phone only — no password)
+      const token = await newUser.getIdToken()
+      const res   = await fetch(`${API}/api/auth/register`, {
         method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ name: regName, username: regUsername, email: regEmail, phone: regPhone, password: regPassword }),
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        body:    JSON.stringify({ name: regName, username: regUsername, phone: regPhone }),
       })
       const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'Registration failed')
+      if (!res.ok) {
+        await newUser.delete() // roll back Firebase user if profile save fails
+        throw new Error(data.error || 'Registration failed')
+      }
 
-      const cred = await signInWithEmailAndPassword(auth, regEmail, regPassword)
-      await redirectByRole(cred.user)
+      await redirectByRole(newUser)
     } catch (err) {
-      setError(err.message)
+      if (err.code) {
+        setError(friendlyError(err.code) || err.message)
+      } else {
+        setError(err.message)
+      }
     } finally {
       setLoading(false)
     }

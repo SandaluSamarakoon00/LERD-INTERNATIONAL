@@ -6,7 +6,7 @@ export default function About() {
 
       {/* ── Hero ── */}
       <div className="about-hero">
-        <p className="about-hero-eyebrow">Est. 2017 · Sri Lanka</p>
+        <p className="about-hero-eyebrow">Est. 2022 · Sri Lanka</p>
         <h1 className="about-hero-title">Our Story</h1>
         <div className="about-divider">
           <div className="about-divider-line" />

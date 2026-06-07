@@ -201,6 +201,64 @@
   margin-bottom: 20px;
 }
 
+/* Quantity Selector */
+.buy-qty {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.buy-qty__label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #7A5C3A;
+}
+
+.buy-qty__controls {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid rgba(196, 154, 108, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.buy-qty__btn {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  color: #C49A6C;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+.buy-qty__btn:hover:not(:disabled) {
+  background: rgba(184, 134, 11, 0.12);
+  color: #F5ECD7;
+}
+
+.buy-qty__btn:disabled {
+  color: #3A2A1A;
+  cursor: not-allowed;
+}
+
+.buy-qty__value {
+  min-width: 44px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #F5ECD7;
+  border-left: 1px solid rgba(196, 154, 108, 0.2);
+  border-right: 1px solid rgba(196, 154, 108, 0.2);
+  padding: 0 8px;
+  line-height: 40px;
+}
+
 /* Buttons */
 .buy-actions {
   display: flex;

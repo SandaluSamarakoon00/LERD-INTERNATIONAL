@@ -36,6 +36,29 @@ router.post('/add', verifyToken, async (req, res) => {
   }
 })
 
+// PUT update item quantity
+router.put('/update', verifyToken, async (req, res) => {
+  try {
+    const { productId, quantity } = req.body
+    const ref     = db.collection('carts').doc(req.user.uid)
+    const cartDoc = await ref.get()
+    if (!cartDoc.exists) return res.json({ items: [] })
+
+    let items = cartDoc.data().items
+    if (quantity <= 0) {
+      items = items.filter(i => i.productId !== productId)
+    } else {
+      const idx = items.findIndex(i => i.productId === productId)
+      if (idx >= 0) items[idx].quantity = quantity
+    }
+
+    await ref.set({ items, updatedAt: new Date() })
+    res.json({ items })
+  } catch (err) {
+    res.status(500).json({ error: err.message })
+  }
+})
+
 // DELETE remove item from cart
 router.delete('/remove/:productId', verifyToken, async (req, res) => {
   try {

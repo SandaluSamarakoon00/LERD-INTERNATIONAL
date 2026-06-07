@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ShoppingBag, Zap, ChevronRight } from 'lucide-react'
+import { useCart } from '../context/CartContext'
 import '../styles/BuyProduct.css'
 
 const API = import.meta.env.VITE_API_URL
@@ -18,6 +19,8 @@ export default function BuyProduct() {
   const [loading,    setLoading]    = useState(true)
   const [activeImg,  setActiveImg]  = useState(null)
   const [cartMsg,    setCartMsg]    = useState(false)
+  const [qty,        setQty]        = useState(1)
+  const { addToCart } = useCart()
 
   useEffect(() => {
     fetch(`${API}/api/products/${id}`)
@@ -30,10 +33,13 @@ export default function BuyProduct() {
       .catch(() => setLoading(false))
   }, [id])
 
-  function handleAddToCart() {
+  async function handleAddToCart() {
+    await addToCart(product, qty)
     setCartMsg(true)
     setTimeout(() => setCartMsg(false), 2500)
   }
+
+  const maxQty = product?.stock > 0 ? product.stock : 99
 
   const allImages = product
     ? [product.mainImage, ...(product.subImages || [])].filter(Boolean)
@@ -120,9 +126,37 @@ export default function BuyProduct() {
               </>
             )}
 
+            {/* Quantity Selector */}
+            {/*<div className="buy-qty">
+              <span className="buy-qty__label">Quantity</span>
+              <div className="buy-qty__controls">
+                <button
+                  className="buy-qty__btn"
+                  onClick={() => setQty(q => Math.max(1, q - 1))}
+                  disabled={qty <= 1}
+                >−</button>
+                <span className="buy-qty__value">{qty}</span>
+                <button
+                  className="buy-qty__btn"
+                  onClick={() => setQty(q => Math.min(maxQty, q + 1))}
+                  disabled={qty >= maxQty}
+                >+</button>
+              </div>
+            </div>*/}
+
             {/* Action Buttons */}
             <div className="buy-actions">
-              <button className="buy-btn-buynow" onClick={() => navigate('/contact')}>
+              <button className="buy-btn-buynow" onClick={() => navigate('/checkout', {
+                state: {
+                  directItem: {
+                    productId: product.id,
+                    name:      product.name,
+                    price:     product.price,
+                    image:     product.mainImage || null,
+                    quantity:  qty,
+                  }
+                }
+              })}>
                 <Zap size={14} style={{ display:'inline', marginRight:'8px', verticalAlign:'middle' }} />
                 Buy Now
               </button>

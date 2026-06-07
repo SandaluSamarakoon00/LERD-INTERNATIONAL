@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { CartProvider } from './context/CartContext'
 import Layout from './components/layout/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -10,9 +11,14 @@ import Spotlight from './pages/Spotlight'
 import NotFound from './pages/NotFound'
 import Login from './pages/Login'
 import AdminLayout from './pages/admin/AdminLayout'
+import ProtectedAdminRoute from './components/ProtectedAdminRoute'
+import Checkout from './pages/Checkout'
+import PaymentReturn from './pages/PaymentReturn'
+import PaymentCancel from './pages/PaymentCancel'
 import Dashboard from './pages/admin/Dashboard'
 import AddProduct from './pages/admin/AddProduct'
 import ProductList from './pages/admin/ProductList'
+import Orders from './pages/admin/Orders'
 import SellProduct from './pages/admin/SellProduct'
 import Inventory from './pages/admin/Inventory'
 import Users from './pages/admin/Users'
@@ -25,6 +31,7 @@ function ScrollToTop() {
 
 export default function App() {
   return (
+    <CartProvider>
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
@@ -39,13 +46,17 @@ export default function App() {
           <Route path="products/:id" element={<BuyProduct />} />
           <Route path="spotlight" element={<Spotlight />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="payment/success" element={<PaymentReturn />} />
+          <Route path="payment/cancel" element={<PaymentCancel />} />
           <Route path="*" element={<NotFound />} />
         </Route>
 
-        {/* Admin dashboard */}
-        <Route path="admin" element={<AdminLayout />}>
+        {/* Admin dashboard — protected: redirects guests to /login, non-admins to / */}
+        <Route path="admin" element={<ProtectedAdminRoute><AdminLayout /></ProtectedAdminRoute>}>
           <Route index element={<Dashboard />} />
           <Route path="products" element={<ProductList />} />
+          <Route path="orders"   element={<Orders />} />
           <Route path="add-product" element={<AddProduct />} />
           <Route path="sell" element={<SellProduct />} />
           <Route path="inventory" element={<Inventory />} />
@@ -53,5 +64,6 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    </CartProvider>
   )
 }

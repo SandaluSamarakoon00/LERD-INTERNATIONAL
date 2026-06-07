@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { ShoppingBag, Search, User, Menu, X, Home, LogOut, LayoutDashboard, UserCircle, Phone, Mail, AtSign } from 'lucide-react'
+import { ShoppingBag, Search, User, Menu, X, Home, LogOut, LayoutDashboard, UserCircle, Phone, Mail, AtSign, Truck } from 'lucide-react'
 import { auth } from '../../firebase'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
+import { useCart } from '../../context/CartContext'
 
 const API = import.meta.env.VITE_API_URL
 
@@ -84,6 +85,8 @@ export default function Navbar() {
     setUserMenu(false)
     navigate('/login')
   }
+
+  const { totalItems, setOpen: openCart } = useCart()
 
   const displayName  = user?.displayName || user?.email?.split('@')[0] || 'User'
   const displayEmail = user?.email || ''
@@ -188,10 +191,12 @@ export default function Navbar() {
                 {searchOpen ? <X size={18} /> : <Search size={18} />}
               </button>
 
-              <Link to="/cart" style={{ color: '#C49A6C' }} className="relative hover:text-yellow-400 transition-colors duration-200" aria-label="Cart">
+              <button onClick={() => openCart(true)} style={{ color: '#C49A6C', background: 'none', border: 'none', cursor: 'pointer' }} className="relative hover:text-yellow-400 transition-colors duration-200" aria-label="Cart">
                 <ShoppingBag size={18} />
-                <span className="absolute -top-2 -right-2 bg-yellow-600 text-leather-900 text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold leading-none">0</span>
-              </Link>
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-yellow-600 text-leather-900 text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold leading-none">{totalItems}</span>
+                )}
+              </button>
 
               {/* User area — logged in or not */}
               {user ? (
@@ -358,15 +363,17 @@ export default function Navbar() {
         </NavLink>
 
         {/* Cart */}
-        <Link to="/cart"
+        <button onClick={() => openCart(true)}
           className="flex-1 flex flex-col items-center justify-center gap-1 py-2 transition-colors duration-200"
-          style={{ color: pathname === '/cart' ? '#EAB308' : '#C49A6C' }} aria-label="Cart">
+          style={{ color: '#C49A6C', background: 'none', border: 'none', cursor: 'pointer' }} aria-label="Cart">
           <div className="relative">
             <ShoppingBag size={20} />
-            <span className="absolute -top-2 -right-2 bg-yellow-600 text-leather-900 text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold leading-none">0</span>
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-yellow-600 text-leather-900 text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold leading-none">{totalItems}</span>
+            )}
           </div>
           <span className="text-[9px] tracking-[0.15em] uppercase">Cart</span>
-        </Link>
+        </button>
 
         {/* My Account / User */}
         {user ? (

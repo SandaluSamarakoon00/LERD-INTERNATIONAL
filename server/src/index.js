@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 5000
 
 app.use(cors({ origin: 'http://localhost:5173' }))
 app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => res.json({ message: 'LERD API is running' }))
 
