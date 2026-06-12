@@ -1,0 +1,474 @@
+/* ── Page base ── */
+.novara-page {
+  background-color: #FAF7F2;
+  min-height: 100vh;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #1A0F08;
+}
+
+/* ── Hero ── */
+.novara-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 160px 24px 96px;
+  background: linear-gradient(180deg, #F0E4D0 0%, #FAF7F2 100%);
+  border-bottom: 1px solid rgba(184,134,11,0.25);
+}
+
+.novara-hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.8em;
+  color: #B8860B;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.novara-hero-title {
+  font-family: 'Playfair Display', serif;
+  color: #1A0F08;
+  font-size: clamp(32px, 5vw, 72px);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.novara-hero-sub {
+  font-size: 20px;
+  color: #7A5230;
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.novara-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 36px;
+  background: #B8860B;
+  color: #FAF7F2;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.2s;
+  border: 1px solid transparent;
+}
+.novara-hero-cta:hover {
+  background: #8B6914;
+  transform: translateY(-1px);
+}
+
+/* ── Divider ── */
+.novara-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.novara-divider-line {
+  width: 80px;
+  height: 1px;
+  background: #B8860B;
+  opacity: 0.7;
+}
+.novara-divider-diamond {
+  width: 8px;
+  height: 8px;
+  background: #B8860B;
+  transform: rotate(45deg);
+}
+
+/* ── Section wrappers ── */
+.novara-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.novara-section-alt {
+  background-color: #F0E4D0;
+  border-top: 1px solid rgba(184,134,11,0.2);
+  border-bottom: 1px solid rgba(184,134,11,0.2);
+  padding: 80px 24px;
+}
+
+.novara-section-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ── Typography helpers ── */
+.novara-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.7em;
+  color: #B8860B;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.novara-heading {
+  font-family: 'Playfair Display', serif;
+  color: #1A0F08;
+  font-size: clamp(24px, 3vw, 42px);
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+.novara-heading-italic {
+  font-style: italic;
+  color: #B8860B;
+}
+
+.novara-body {
+  font-size: 17px;
+  line-height: 1.85;
+  color: #5C3D2E;
+  margin-bottom: 16px;
+  text-align: justify;
+}
+
+/* ── About two-column ── */
+.novara-about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (min-width: 768px) {
+  .novara-about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Why Choose cards ── */
+.novara-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+@media (min-width: 640px) {
+  .novara-features-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  .novara-features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.novara-feature-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(184,134,11,0.25);
+  padding: 28px 24px;
+  box-shadow: 0 2px 16px rgba(90,50,20,0.05);
+}
+
+.novara-feature-bar {
+  width: 32px;
+  height: 3px;
+  background: #B8860B;
+  margin-bottom: 16px;
+}
+
+.novara-feature-title {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #1A0F08;
+  margin-bottom: 8px;
+}
+
+.novara-feature-desc {
+  font-size: 13px;
+  color: #7A5230;
+  line-height: 1.7;
+}
+
+/* ── Vision / Mission cards ── */
+.novara-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(184,134,11,0.3);
+  padding: 32px;
+  box-shadow: 0 2px 16px rgba(90,50,20,0.05);
+}
+
+.novara-card-bar {
+  width: 4px;
+  height: 32px;
+  background: #B8860B;
+  flex-shrink: 0;
+}
+
+.novara-card-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.6em;
+  color: #B8860B;
+  text-transform: uppercase;
+}
+
+.novara-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: #1A0F08;
+  line-height: 1.5;
+  margin-top: 16px;
+}
+
+/* ── Core Values ── */
+.novara-value-diamond {
+  width: 8px;
+  height: 8px;
+  background: #B8860B;
+  transform: rotate(45deg);
+  margin: 0 auto 16px;
+}
+
+.novara-value-title {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #1A0F08;
+  margin-bottom: 8px;
+}
+
+.novara-value-desc {
+  font-size: 15px;
+  color: #8B6347;
+  line-height: 1.6;
+}
+
+/* ── Products grid ── */
+.novara-products-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 40px;
+}
+@media (min-width: 768px) {
+  .novara-products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .novara-products-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  /* Center a lone last item in the 4-col grid */
+  .novara-products-grid > :last-child:nth-child(4n + 1) {
+    grid-column: 1 / -1;
+    width: calc((100% - 3 * 16px) / 4);
+    margin: 0 auto;
+  }
+}
+
+.novara-product-item {
+  background: #FFFFFF;
+  border: 1px solid rgba(184,134,11,0.2);
+  padding: 20px 18px;
+  box-shadow: 0 1px 8px rgba(90,50,20,0.04);
+}
+
+.novara-product-dot {
+  width: 6px;
+  height: 6px;
+  background: #B8860B;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.novara-product-name {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #1A0F08;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.novara-product-desc {
+  font-size: 14px;
+  color: #7A5230;
+  line-height: 1.6;
+}
+
+/* ── Customization checklist ── */
+.novara-checklist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 32px;
+  margin-top: 32px;
+  list-style: none;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .novara-checklist {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.novara-checklist li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #5C3D2E;
+}
+
+.novara-check-icon {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #B8860B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 10px;
+  color: #B8860B;
+}
+
+/* ── Materials features ── */
+.novara-materials-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 40px;
+  margin-top: 32px;
+  list-style: none;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .novara-materials-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.novara-materials-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #5C3D2E;
+}
+
+.novara-bullet {
+  width: 5px;
+  height: 5px;
+  background: #B8860B;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Industries ── */
+.novara-industries-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 40px;
+}
+@media (min-width: 640px) {
+  .novara-industries-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1024px) {
+  /* 6 equal columns so each card spans 2 → 3 per row */
+  .novara-industries-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .novara-industry-card {
+    grid-column: span 2;
+  }
+
+  /* Center the 2 orphan cards on the last row */
+  .novara-industry-card:nth-child(4) {
+    grid-column: 2 / 4;
+  }
+  .novara-industry-card:nth-child(5) {
+    grid-column: 4 / 6;
+  }
+}
+
+.novara-industry-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(184,134,11,0.2);
+  padding: 24px;
+  box-shadow: 0 1px 8px rgba(90,50,20,0.04);
+}
+
+.novara-industry-title {
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #1A0F08;
+  margin-bottom: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(184,134,11,0.2);
+}
+
+.novara-industry-desc {
+  font-size: 15px;
+  color: #7A5230;
+  line-height: 1.7;
+  margin-top: 10px;
+}
+
+/* ── CTA banner ── */
+.novara-cta {
+  text-align: center;
+  padding: 96px 24px;
+  background: #F0E4D0;
+  border-top: 1px solid rgba(184,134,11,0.3);
+}
+
+.novara-cta-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.7em;
+  color: #B8860B;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.novara-cta-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  color: #1A0F08;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.novara-cta-sub {
+  font-size: 20px;
+  color: #7A5230;
+  max-width: 480px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+.novara-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 44px;
+  background: #B8860B;
+  color: #FAF7F2;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.25s, transform 0.2s;
+}
+.novara-cta-btn:hover {
+  background: #8B6914;
+  transform: translateY(-1px);
+}

@@ -165,7 +165,42 @@ export default function Products() {
           {loading ? (
             <div className="products-empty">Loading products…</div>
           ) : filtered.length === 0 ? (
-            <div className="products-empty">No products found.</div>
+            <div className="coming-soon">
+              <div className="coming-soon__inner">
+
+                <p className="coming-soon__eyebrow">Coming Soon</p>
+
+                <h2 className="coming-soon__title">
+                  Premium {collection} Collection
+                </h2>
+
+                <div className="coming-soon__divider">
+                  <div className="coming-soon__line" />
+                  <div className="coming-soon__diamond" />
+                  <div className="coming-soon__line" />
+                </div>
+
+                <p className="coming-soon__desc">
+                  Our artisans are carefully crafting the finest leather pieces for this collection.
+                  Each product is handmade with precision, passion, and the highest quality materials
+                  sourced exclusively for LERD.
+                </p>
+
+                <div className="coming-soon__features">
+                  {['Handcrafted in Sri Lanka', 'Premium Full-Grain Leather', 'Lifetime Craftsmanship'].map(f => (
+                    <div key={f} className="coming-soon__feature">
+                      <div className="coming-soon__feature-dot" />
+                      <span>{f}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="coming-soon__badge">
+                  <span>Stay Tuned</span>
+                </div>
+
+              </div>
+            </div>
           ) : (
             <div className="products-grid">
               {filtered.map(p => (

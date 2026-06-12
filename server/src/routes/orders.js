@@ -141,11 +141,11 @@ router.post('/initiate', async (req, res) => {
 
     await db.collection('orders').doc(orderId).set(orderData)
 
-    // Send confirmation email immediately on order creation.
-    // In production the notify webhook also triggers this after payment confirmation.
-    sendOrderConfirmation(orderData).catch(err =>
-      console.error('Email send failed:', err.message)
-    )
+    // Removed: email was firing before payment was confirmed (on pending status).
+    // Confirmation email is now sent only by the /notify webhook after PayHere confirms payment.
+    // sendOrderConfirmation(orderData).catch(err =>
+    //   console.error('Email send failed:', err.message)
+    // )
 
     res.json({
       merchant_id:  MERCHANT_ID,

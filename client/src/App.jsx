@@ -12,6 +12,7 @@ import NotFound from './pages/NotFound'
 import Login from './pages/Login'
 import AdminLayout from './pages/admin/AdminLayout'
 import ProtectedAdminRoute from './components/ProtectedAdminRoute'
+import Novara from './pages/Novara'
 import Checkout from './pages/Checkout'
 import PaymentReturn from './pages/PaymentReturn'
 import PaymentCancel from './pages/PaymentCancel'
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="products" element={<Products />} />
           <Route path="products/:id" element={<BuyProduct />} />
           <Route path="spotlight" element={<Spotlight />} />
+          <Route path="novara" element={<Novara />} />
           <Route path="contact" element={<Contact />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="payment/success" element={<PaymentReturn />} />

@@ -120,7 +120,7 @@ export default function Footer() {
           <div>
             <h4 className="text-xs tracking-[0.3em] uppercase text-leather-200 mb-5">Company</h4>
             <ul className="space-y-3">
-              {[['About', '/about'], ['Products', '/products'],['Spotlight', '/spotlight'], ['Contact', '/contact'], ['Our Story', '/about']].map(([label, to]) => (
+              {[['About', '/about'], ['Products', '/products'], ['Novara', '/novara'], ['Contact', '/contact'], ['Our Story', '/about']].map(([label, to]) => (
                 <li key={label}>
                   <Link to={to} className="text-sm text-leather-400 hover:text-yellow-400 transition-colors">{label}</Link>
                 </li>
@@ -177,6 +177,7 @@ export default function Footer() {
         <div className="border-t border-leather-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-xs text-leather-500">© 2026 LERD. All rights reserved.</p>
           <p className="text-xs text-leather-500">Handcrafted with love in Sri Lanka</p>
+          <p className="text-xs text-leather-500">Developed by <a href="https://www.qiubix.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition-colors">Qiubix</a></p>
         </div>
       </div>
     </footer>

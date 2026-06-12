@@ -342,6 +342,116 @@
   font-size: 14px;
 }
 
+/* Coming Soon */
+.coming-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 16px;
+}
+
+.coming-soon__inner {
+  text-align: center;
+  max-width: 540px;
+  padding: 56px 48px;
+  background: rgba(26, 15, 8, 0.8);
+  border: 1px solid rgba(184, 134, 11, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(184, 134, 11, 0.1);
+}
+
+.coming-soon__eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: #B8860B;
+  margin-bottom: 16px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.coming-soon__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  color: #F5ECD7;
+  font-weight: 700;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.coming-soon__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 auto 28px;
+  max-width: 200px;
+}
+
+.coming-soon__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #B8860B);
+}
+
+.coming-soon__line:last-child {
+  background: linear-gradient(90deg, #B8860B, transparent);
+}
+
+.coming-soon__diamond {
+  width: 6px;
+  height: 6px;
+  background: #B8860B;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.coming-soon__desc {
+  font-size: 14px;
+  color: #A07850;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.coming-soon__features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 36px;
+  text-align: left;
+}
+
+.coming-soon__feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #C49A6C;
+  letter-spacing: 0.04em;
+}
+
+.coming-soon__feature-dot {
+  width: 5px;
+  height: 5px;
+  background: #B8860B;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.coming-soon__badge {
+  display: inline-block;
+  padding: 8px 28px;
+  border: 1px solid rgba(184, 134, 11, 0.4);
+  border-radius: 30px;
+  background: rgba(184, 134, 11, 0.08);
+}
+
+.coming-soon__badge span {
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #B8860B;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .products-grid { grid-template-columns: repeat(3, 1fr); }
