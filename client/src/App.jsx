@@ -8,17 +8,22 @@ import Products from './pages/Products'
 import BuyProduct from './pages/BuyProduct'
 import Contact from './pages/Contact'
 import Spotlight from './pages/Spotlight'
+import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 import NotFound from './pages/NotFound'
 import Login from './pages/Login'
 import AdminLayout from './pages/admin/AdminLayout'
 import ProtectedAdminRoute from './components/ProtectedAdminRoute'
 import Novara from './pages/Novara'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 import Checkout from './pages/Checkout'
 import PaymentReturn from './pages/PaymentReturn'
 import PaymentCancel from './pages/PaymentCancel'
 import Dashboard from './pages/admin/Dashboard'
 import AddProduct from './pages/admin/AddProduct'
 import ProductList from './pages/admin/ProductList'
+import AddBlog from './pages/admin/AddBlog'
+import BlogList from './pages/admin/BlogList'
 import Orders from './pages/admin/Orders'
 import SellProduct from './pages/admin/SellProduct'
 import Inventory from './pages/admin/Inventory'
@@ -47,6 +52,9 @@ export default function App() {
           <Route path="products/:id" element={<BuyProduct />} />
           <Route path="spotlight" element={<Spotlight />} />
           <Route path="novara" element={<Novara />} />
+          <Route path="blog" element={<Blog />} />
+          <Route path="blog/:id" element={<BlogPost />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
           <Route path="contact" element={<Contact />} />
           <Route path="checkout" element={<Checkout />} />
           <Route path="payment/success" element={<PaymentReturn />} />
@@ -60,6 +68,8 @@ export default function App() {
           <Route path="products" element={<ProductList />} />
           <Route path="orders"   element={<Orders />} />
           <Route path="add-product" element={<AddProduct />} />
+          <Route path="add-blog" element={<AddBlog />} />
+          <Route path="blogs" element={<BlogList />} />
           <Route path="sell" element={<SellProduct />} />
           <Route path="inventory" element={<Inventory />} />
           <Route path="users"     element={<Users />} />

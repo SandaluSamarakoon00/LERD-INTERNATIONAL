@@ -175,7 +175,10 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-leather-700 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-          <p className="text-xs text-leather-500">© 2026 LERD. All rights reserved.</p>
+          <p className="text-xs text-leather-500 flex items-center gap-3">
+            © 2026 LERD. All rights reserved.
+            <Link to="/privacy-policy" className="hover:text-yellow-400 transition-colors">Privacy Policy</Link>
+          </p>
           <p className="text-xs text-leather-500">Handcrafted with love in Sri Lanka</p>
           <p className="text-xs text-leather-500">Developed by <a href="https://www.qiubix.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-400 transition-colors">Qiubix</a></p>
         </div>

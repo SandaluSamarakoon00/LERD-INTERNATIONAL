@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom'
 import {
   LayoutDashboard, Package, PlusSquare, ShoppingCart,
-  Warehouse, Users, Menu, X, LogOut, ChevronRight, Home, ClipboardList
+  Warehouse, Users, Menu, X, LogOut, ChevronRight, Home, ClipboardList, Newspaper
 } from 'lucide-react'
 import { auth } from '../../firebase'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
@@ -12,6 +12,8 @@ const navItems = [
   { to: '/admin',             label: 'Dashboard',    icon: LayoutDashboard, end: true },
   { to: '/admin/add-product', label: 'Add Product',  icon: PlusSquare },
   { to: '/admin/products',    label: 'Product List', icon: Package },
+  { to: '/admin/add-blog',    label: 'Add Blog Post',icon: Newspaper },
+  { to: '/admin/blogs',       label: 'Blog Posts',   icon: Newspaper },
   { to: '/admin/orders',      label: 'Orders',       icon: ClipboardList },
   /*{ to: '/admin/sell',        label: 'Sell Product', icon: ShoppingCart },
   { to: '/admin/inventory',   label: 'Inventory',    icon: Warehouse },*/

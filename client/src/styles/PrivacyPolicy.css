@@ -1,0 +1,165 @@
+/* ── Page base ── */
+.privacy-page {
+  background-color: #FAF7F2;
+  min-height: 100vh;
+  font-family: 'Josefin Sans', sans-serif;
+  color: #1A0F08;
+}
+
+/* ── Hero ── */
+.privacy-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 160px 24px 80px;
+  background: linear-gradient(180deg, #F0E4D0 0%, #FAF7F2 100%);
+  border-bottom: 1px solid rgba(184,134,11,0.25);
+}
+
+.privacy-hero-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.8em;
+  color: #B8860B;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.privacy-hero-title {
+  font-family: 'Playfair Display', serif;
+  color: #1A0F08;
+  font-size: clamp(32px, 5vw, 60px);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.privacy-hero-sub {
+  font-size: 13px;
+  color: #8B6347;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* ── Divider ── */
+.privacy-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 20px 0 0;
+}
+.privacy-divider-line {
+  width: 80px;
+  height: 1px;
+  background: #B8860B;
+  opacity: 0.7;
+}
+.privacy-divider-diamond {
+  width: 8px;
+  height: 8px;
+  background: #B8860B;
+  transform: rotate(45deg);
+}
+
+/* ── Body ── */
+.privacy-body-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 72px 24px 96px;
+}
+
+.privacy-section {
+  margin-bottom: 40px;
+}
+
+.privacy-section-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: #B8860B;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.privacy-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #1A0F08;
+  margin-bottom: 14px;
+}
+
+.privacy-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #5C3D2E;
+  margin-bottom: 14px;
+}
+
+.privacy-text:last-child {
+  margin-bottom: 0;
+}
+
+.privacy-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.privacy-list li {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #5C3D2E;
+  padding-left: 20px;
+  position: relative;
+}
+
+.privacy-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  background: #B8860B;
+  transform: rotate(45deg);
+}
+
+.privacy-list strong {
+  color: #1A0F08;
+  font-weight: 600;
+}
+
+.privacy-updated {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #A07850;
+  margin-top: 8px;
+}
+
+.privacy-contact-box {
+  background: #FFFFFF;
+  border: 1px solid rgba(184,134,11,0.3);
+  border-radius: 2px;
+  padding: 28px 32px;
+  box-shadow: 0 2px 16px rgba(90,50,20,0.05);
+}
+
+.privacy-contact-box p {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: #5C3D2E;
+}
+
+.privacy-contact-box a {
+  color: #B8860B;
+  text-decoration: none;
+}
+
+.privacy-contact-box a:hover {
+  text-decoration: underline;
+}
