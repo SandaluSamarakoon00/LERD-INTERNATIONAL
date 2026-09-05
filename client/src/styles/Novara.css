@@ -61,6 +61,34 @@
   transform: translateY(-1px);
 }
 
+.novara-hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.novara-hero-cta-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 36px;
+  background: transparent;
+  color: #1A0F08;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #B8860B;
+  transition: background 0.25s, color 0.25s, transform 0.2s;
+}
+.novara-hero-cta-outline:hover {
+  background: #B8860B;
+  color: #FAF7F2;
+  transform: translateY(-1px);
+}
+
 /* ── Divider ── */
 .novara-divider {
   display: flex;
@@ -470,5 +498,32 @@
 }
 .novara-cta-btn:hover {
   background: #8B6914;
+  transform: translateY(-1px);
+}
+
+.novara-cta-btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.novara-cta-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 44px;
+  background: transparent;
+  color: #FAF7F2;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #B8860B;
+  transition: background 0.25s, transform 0.2s;
+}
+.novara-cta-btn-outline:hover {
+  background: #B8860B;
   transform: translateY(-1px);
 }

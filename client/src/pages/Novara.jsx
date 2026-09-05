@@ -109,9 +109,19 @@ export default function Novara() {
           guest experiences through exceptional craftsmanship, sophisticated design, and
           durable performance materials.
         </p>
-        <Link to="/contact" className="novara-hero-cta">
-          Get in Touch
-        </Link>
+        <div className="novara-hero-cta-group">
+          <Link to="/contact" className="novara-hero-cta">
+            Get in Touch
+          </Link>
+          <a
+            href="/docs/novara-catalogue.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="novara-hero-cta-outline"
+          >
+            View Catalogue
+          </a>
+        </div>
       </div>
 
       {/* ── About NOVARA ── */}
@@ -330,9 +340,19 @@ export default function Novara() {
           Get in touch with our team to discuss your customisation needs and bring your
           hospitality vision to life.
         </p>
-        <Link to="/contact" className="novara-cta-btn">
-          Contact Us
-        </Link>
+        <div className="novara-cta-btn-group">
+          <Link to="/contact" className="novara-cta-btn">
+            Contact Us
+          </Link>
+          <a
+            href="/docs/novara-catalogue.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="novara-cta-btn-outline"
+          >
+            View Catalogue
+          </a>
+        </div>
       </div>
 
     </div>
